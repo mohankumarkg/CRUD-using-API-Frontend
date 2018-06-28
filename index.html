@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AngularJs Application</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/controller.js"></script>
+  <link data-require="bootstrap@4.0.5" data-semver="4.0.5" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+  <!-- Bootstrap Date-Picker Plugin -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body class="container">
+  <div ng-app="mainApp" ng-controller="crudController">
+    <table class="table-format">
+      <tr>
+        <td>ID:</td>
+        <td><input class="form-control" type="text" ng-model="id"></td>
+      </tr>
+      
+      <tr>
+        <td>User Name:</td>
+        <td><input class="form-control" type="text" ng-model="user"></td>
+      </tr>
+
+      <tr>
+        <td>Amount:</td>
+        <td><input class="form-control" type="text" ng-model="amount"></td>
+      </tr>
+
+      <tr>
+        <td>Currency:</td>
+        <td><input class="form-control" type="text" ng-model="currency"></td>
+      </tr>
+
+      <tr>
+        <td>Date:</td>
+        <td><input class="form-control" type="date" ng-model="txn_date"></td>
+      </tr>
+
+      <tr>
+        <td><input class="btn btn-primary" type="button" ng-click="addData()" value="Save Data"></td>
+        <td><input class="btn btn-success" type="button" ng-click="updateData()" value="Update Data"></td>
+      </tr>
+    </table>
+
+    <table class="table table-striped">
+      <thead>
+        <td>ID</td>
+        <td>User Name</td>
+        <td>Amount</td>
+        <td>Currency</td>
+        <td>Date</td>
+        <td>Action Commands</td>
+      </thead>
+
+      <tr ng-repeat="user in userList">
+        <td>{{user.id}}</td>
+        <td>{{user.user}}</td>
+        <td>{{user.amount}}</td>
+        <td>{{user.currency}}</td>
+        <td>{{user.txn_date}}</td>
+        <td><input class="btn btn-info" type="button" value="Edit" ng-click="editUser(user)"></td>
+        <td><input class="btn btn-danger" type="button" value="Delete" ng-click="deleteData(user)"></td>
+      </tr> 
+
+    </table>
+
+  </div>
+</body>
+</html>
